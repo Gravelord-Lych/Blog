@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-04-29 08:41:51 / 修改时间：08:51:21" itemprop="dateCreated datePublished" datetime="2023-04-29T08:41:51+08:00">2023-04-29</time>
+              <time title="创建时间：2023-04-29 08:41:51 / 修改时间：08:52:45" itemprop="dateCreated datePublished" datetime="2023-04-29T08:41:51+08:00">2023-04-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,8 +255,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Vector3d</span> <span class="variable">projectedView</span> <span class="operator">=</span> Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();</span><br><span class="line">matrixStack.translate(-projectedView.x, -projectedView.y, -projectedView.z);</span><br></pre></td></tr></table></figure>
 <p>这样做的好处显而易见——可以在渲染中用绝对坐标替换相对坐标。<br>
 不过使用这样的方式，有时也会导致一些问题，先从float和double的有效数字分析</p>
-<h2 id="Java中不精确的浮点数">Java中不精确的浮点数</h2>
-<h3 id="Java中的float和double">Java中的float和double</h3>
+<h2 id="Java中的浮点数">Java中的浮点数</h2>
 <p>下表为float和double的一些属性比较</p>
 <table>
 <thead>
