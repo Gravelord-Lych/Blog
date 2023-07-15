@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-15 08:47:00" itemprop="dateModified" datetime="2023-07-15T08:47:00+08:00">2023-07-15</time>
+                <time title="修改时间：2023-07-15 08:50:37" itemprop="dateModified" datetime="2023-07-15T08:50:37+08:00">2023-07-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -291,7 +291,7 @@
 <h4 id="nbt"><a href="#nbt" class="headerlink" title="nbt"></a><em>nbt</em></h4><p>指定了召唤的实体的NBT（对每个召唤的实体使用该NBT的副本）<br>与原版<code>/summon</code>指令相同，当传入NBT时，Mob类型实体的finalizeSpawn方法将不会被调用</p>
 <h4 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a><em>举例</em></h4><p><code>/summoningex summon minecraft:pig inside #Example count 10</code><br>在指令使用者所在维度中名为Example的召唤区域内召唤了10只猪<br><code>/summoningex summon minecraft:iron_golem inside #Example2 count 5 nbt &#123;Health:1&#125;</code><br>在指令使用者所在维度中名为Example2的召唤区域内召唤了5个生命值为1的铁傀儡</p>
 <h2 id="新的实体选择器"><a href="#新的实体选择器" class="headerlink" title="新的实体选择器"></a>新的实体选择器</h2><p>本Mod提供了一个新的实体选择器（IEntitySelectorType）（默认为@b，可在配置文件内修改）<br>该实体选择器可以选中所有（或满足一定条件的）与指定召唤区域相交（指碰撞箱相交）的实体</p>
-<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p><code>\@b(#(name))[op]</code></p>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p><code>/@b(#(name))[op]</code></p>
 <h4 id="name-2"><a href="#name-2" class="headerlink" title="name"></a><em>name</em></h4><p>召唤区域的名称（这里只能使用<strong>指令使用者所在维度的</strong>召唤区域）</p>
 <h4 id="op"><a href="#op" class="headerlink" title="[op]"></a><em>[op]</em></h4><p>与原版实体选择器<code>@e</code>相同</p>
 <h4 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a><em>举例</em></h4><p><code>/kill @b(#Example)</code><br>杀死指令使用者所在维度中名为Example的召唤区域（下文简记为召唤区域Example）内的所有实体<br><code>/effect give @b(#Example)[type=!minecraft:player] minecraft:wither 45</code><br>将45秒的凋零效果应用于召唤区域Example内所有不为玩家的实体</p>
