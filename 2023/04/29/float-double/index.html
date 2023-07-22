@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"lych.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="引入 在世界边境附近调试Mod实体时，偶然发现了这样的问题（图中激光渲染的位置出现异常偏移）  这是怎么回事呢？ 常用技巧 在Minecraft的Mod开发中，开发者们可能常使用以下的代码辅助世界的渲染： 12Vector3d projectedView &#x3D; Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();mat">
+  <meta name="description" content="引入在世界边境附近调试Mod实体时，偶然发现了这样的问题（图中激光渲染的位置出现异常偏移）  这是怎么回事呢？ 常用技巧在Minecraft的Mod开发中，开发者们可能常使用以下的代码辅助世界的渲染： 12Vector3d projectedView &#x3D; Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();matri">
 <meta property="og:type" content="article">
 <meta property="og:title" content="（MC1.16.5）float的精度引起的一个渲染问题">
 <meta property="og:url" content="https://lych.top/2023/04/29/float-double/index.html">
 <meta property="og:site_name" content="The Graveyard">
-<meta property="og:description" content="引入 在世界边境附近调试Mod实体时，偶然发现了这样的问题（图中激光渲染的位置出现异常偏移）  这是怎么回事呢？ 常用技巧 在Minecraft的Mod开发中，开发者们可能常使用以下的代码辅助世界的渲染： 12Vector3d projectedView &#x3D; Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();mat">
+<meta property="og:description" content="引入在世界边境附近调试Mod实体时，偶然发现了这样的问题（图中激光渲染的位置出现异常偏移）  这是怎么回事呢？ 常用技巧在Minecraft的Mod开发中，开发者们可能常使用以下的代码辅助世界的渲染： 12Vector3d projectedView &#x3D; Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();matri">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lych.top/2023/04/29/float-double/bug.webp">
 <meta property="og:image" content="https://lych.top/2023/04/29/float-double/fixed.webp">
@@ -266,68 +266,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="引入">引入</h2>
-<p>在世界边境附近调试Mod实体时，偶然发现了这样的问题（图中激光渲染的位置出现异常偏移）</p>
+        <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>在世界边境附近调试Mod实体时，偶然发现了这样的问题（图中激光渲染的位置出现异常偏移）</p>
 <img data-src="/2023/04/29/float-double/bug.webp" class title="bug">
 <p>这是怎么回事呢？</p>
-<h2 id="常用技巧">常用技巧</h2>
-<p>在Minecraft的Mod开发中，开发者们可能常使用以下的代码辅助世界的渲染：</p>
+<h2 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h2><p>在Minecraft的Mod开发中，开发者们可能常使用以下的代码辅助世界的渲染：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Vector3d</span> <span class="variable">projectedView</span> <span class="operator">=</span> Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();</span><br><span class="line">matrixStack.translate(-projectedView.x, -projectedView.y, -projectedView.z);</span><br></pre></td></tr></table></figure>
-<p>这样做的好处显而易见——可以在渲染中用绝对坐标替换相对坐标。<br>
-不过使用这样的方式，有时也会导致一些问题，先从float和double的有效数字分析</p>
-<h2 id="Java中的浮点数">Java中的浮点数</h2>
-<p>下表为float和double的一些属性比较</p>
+<p>这样做的好处显而易见——可以在渲染中用绝对坐标替换相对坐标。<br>不过使用这样的方式，有时也会导致一些问题，先从float和double的有效数字分析</p>
+<h2 id="Java中的浮点数"><a href="#Java中的浮点数" class="headerlink" title="Java中的浮点数"></a>Java中的浮点数</h2><p>下表为float和double的一些属性比较</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center"><strong>属性</strong></th>
-<th style="text-align:center"><strong>float</strong></th>
-<th style="text-align:center"><strong>double</strong></th>
+<th align="center"><strong>属性</strong></th>
+<th align="center"><strong>float</strong></th>
+<th align="center"><strong>double</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">符号位/bit</td>
-<td style="text-align:center"><em>1</em></td>
-<td style="text-align:center"><em>1</em></td>
+<tbody><tr>
+<td align="center">符号位&#x2F;bit</td>
+<td align="center"><em>1</em></td>
+<td align="center"><em>1</em></td>
 </tr>
 <tr>
-<td style="text-align:center">指数位/bit</td>
-<td style="text-align:center"><em>8</em></td>
-<td style="text-align:center"><em>11</em></td>
+<td align="center">指数位&#x2F;bit</td>
+<td align="center"><em>8</em></td>
+<td align="center"><em>11</em></td>
 </tr>
 <tr>
-<td style="text-align:center">尾数位/bit</td>
-<td style="text-align:center"><em>23</em></td>
-<td style="text-align:center"><em>52</em></td>
+<td align="center">尾数位&#x2F;bit</td>
+<td align="center"><em>23</em></td>
+<td align="center"><em>52</em></td>
 </tr>
 <tr>
-<td style="text-align:center">占用内存空间</td>
-<td style="text-align:center"><em>4</em> Byte (32bit)</td>
-<td style="text-align:center"><em>8</em> Byte (64bit)</td>
+<td align="center">占用内存空间</td>
+<td align="center"><em>4</em> Byte (32bit)</td>
+<td align="center"><em>8</em> Byte (64bit)</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>由此可知float的有效数字位数为6~7位，而double则为15~16位</p>
-<h2 id="float的局限性">float的局限性</h2>
-<h3 id="MatrixStack的translate方法">MatrixStack的translate方法</h3>
-<p>以下是MatrixStack类中translate方法的源代码</p>
+<h2 id="float的局限性"><a href="#float的局限性" class="headerlink" title="float的局限性"></a>float的局限性</h2><h3 id="MatrixStack的translate方法"><a href="#MatrixStack的translate方法" class="headerlink" title="MatrixStack的translate方法"></a>MatrixStack的translate方法</h3><p>以下是MatrixStack类中translate方法的源代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">translate</span><span class="params">(<span class="type">double</span> x, <span class="type">double</span> y, <span class="type">double</span> z)</span> &#123;</span><br><span class="line">      MatrixStack.<span class="type">Entry</span> <span class="variable">entry</span> <span class="operator">=</span> <span class="built_in">this</span>.poseStack.getLast();</span><br><span class="line">      entry.pose.multiply(Matrix4f.createTranslateMatrix((<span class="type">float</span>) x, (<span class="type">float</span>) y, (<span class="type">float</span>) z));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以发现，此方法内做了一个强制类型转换，<strong>将双精度的double转换为了单精度的float！</strong></p>
-<h3 id="世界的大小">世界的大小</h3>
-<p>在World（SRG名，1.16.5）类中，有如下的私有静态方法</p>
+<h3 id="世界的大小"><a href="#世界的大小" class="headerlink" title="世界的大小"></a>世界的大小</h3><p>在World（SRG名，1.16.5）类中，有如下的私有静态方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isInWorldBoundsHorizontal</span><span class="params">(BlockPos pos)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> pos.getX() &gt;= -<span class="number">30000000</span> &amp;&amp; pos.getZ() &gt;= -<span class="number">30000000</span> &amp;&amp; pos.getX() &lt; <span class="number">30000000</span> &amp;&amp; pos.getZ() &lt; <span class="number">30000000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由此可知，MC的世界是60000001x60000001格的，<strong>这会使得当坐标足够大时，用float表示坐标会使float的小数部分丢失</strong>，从而发现了问题所在</p>
-<h3 id="问题发生的原因">问题发生的原因</h3>
-<p>在未解决bug时，由于直接在translate中传入世界真实坐标，导致强制类型转换，进而导致double后面的小数部分丢失</p>
-<h2 id="问题的解决">问题的解决</h2>
-<p>translate时，传入激光起始位置的坐标与玩家坐标的差，使数字变小，以确保float的小数部分保留</p>
+<h3 id="问题发生的原因"><a href="#问题发生的原因" class="headerlink" title="问题发生的原因"></a>问题发生的原因</h3><p>在未解决bug时，由于直接在translate中传入世界真实坐标，导致强制类型转换，进而导致double后面的小数部分丢失</p>
+<h2 id="问题的解决"><a href="#问题的解决" class="headerlink" title="问题的解决"></a>问题的解决</h2><p>translate时，传入激光起始位置的坐标与玩家坐标的差，使数字变小，以确保float的小数部分保留</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Vector3d</span> <span class="variable">cameraPos</span> <span class="operator">=</span> Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();</span><br><span class="line"><span class="type">double</span> <span class="variable">x</span> <span class="operator">=</span> src.x - cameraPos.x;</span><br><span class="line"><span class="type">double</span> <span class="variable">y</span> <span class="operator">=</span> src.y - cameraPos.y;</span><br><span class="line"><span class="type">double</span> <span class="variable">z</span> <span class="operator">=</span> src.z - cameraPos.z;</span><br><span class="line">matrixStack.translate(x, y, z);</span><br></pre></td></tr></table></figure>
 <p>最后效果如下图所示</p>
 <img data-src="/2023/04/29/float-double/fixed.webp" class title="fixed">
 <p>激光渲染的位置的异常偏移消失了！</p>
-<h2 id="总结">总结</h2>
-<ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
 <li>float不精确，开发中无性能需求应尽量使用double（虽然也不是100%精确）</li>
 <li>Minecraft的世界坐标（x和z）的绝对值上限为30000000而不能无限增大，一定程度上与double的精度限制有关（毕竟每个世界坐标都是double的，但主要还是因为int能表示的范围有限）</li>
 <li>原版下实体的生命上限为1024，这也在一定程度上与float的精度限制有关</li>
