@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"lych.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="文章说明 下文中  (op)表示暂时使用的参数名 [op]表示可选操作或参数 op1&#x2F;op2表示并列的必需操作或参数 [op1]&#x2F;[op2]表示并列的可选操作或参数  指令格式 指令名：&#x2F;summoningex (op)（其中op的类型为area或summon） area 提供了对召唤区域（Summoning Area）的操作 格式：&#x2F;summoningex area (op) （其中op的类型为">
+  <meta name="description" content="文章说明下文中  (op)表示暂时使用的参数名 [op]表示可选操作或参数 op1&#x2F;op2表示并列的必需操作或参数 [op1]&#x2F;[op2]表示并列的可选操作或参数  指令格式指令名：&#x2F;summoningex (op)（其中op的类型为area或summon） area提供了对召唤区域（Summoning Area）的操作格式：&#x2F;summoningex area (op)（其中o">
 <meta property="og:type" content="article">
 <meta property="og:title" content="召唤扩展Mod指令使用教程">
 <meta property="og:url" content="https://lych.top/2023/07/14/summoningex/index.html">
 <meta property="og:site_name" content="The Graveyard">
-<meta property="og:description" content="文章说明 下文中  (op)表示暂时使用的参数名 [op]表示可选操作或参数 op1&#x2F;op2表示并列的必需操作或参数 [op1]&#x2F;[op2]表示并列的可选操作或参数  指令格式 指令名：&#x2F;summoningex (op)（其中op的类型为area或summon） area 提供了对召唤区域（Summoning Area）的操作 格式：&#x2F;summoningex area (op) （其中op的类型为">
+<meta property="og:description" content="文章说明下文中  (op)表示暂时使用的参数名 [op]表示可选操作或参数 op1&#x2F;op2表示并列的必需操作或参数 [op1]&#x2F;[op2]表示并列的可选操作或参数  指令格式指令名：&#x2F;summoningex (op)（其中op的类型为area或summon） area提供了对召唤区域（Summoning Area）的操作格式：&#x2F;summoningex area (op)（其中o">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-14T12:36:12.000Z">
 <meta property="article:modified_time" content="2023-07-15T00:50:37.358Z">
@@ -263,127 +263,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="文章说明">文章说明</h2>
-<p>下文中</p>
+        <h2 id="文章说明"><a href="#文章说明" class="headerlink" title="文章说明"></a>文章说明</h2><p>下文中</p>
 <ul>
 <li>(op)表示暂时使用的参数名</li>
 <li>[op]表示可选操作或参数</li>
-<li>op1/op2表示并列的必需操作或参数</li>
-<li>[op1]/[op2]表示并列的可选操作或参数</li>
+<li>op1&#x2F;op2表示并列的必需操作或参数</li>
+<li>[op1]&#x2F;[op2]表示并列的可选操作或参数</li>
 </ul>
-<h2 id="指令格式">指令格式</h2>
-<p>指令名：<code>/summoningex (op)</code>（其中op的类型为<code>area</code>或<code>summon</code>）</p>
-<h3 id="area"><strong>area</strong></h3>
-<p>提供了对召唤区域（Summoning Area）的操作<br>
-格式：<code>/summoningex area (op)</code><br>
-（其中op的类型为<code>define</code>，<code>list</code>，<code>query</code>，<code>remove</code>，<code>show</code>或<code>hide</code>）</p>
-<h4 id="define">define</h4>
-<p>用于定义和命名召唤区域<br>
-格式：<code>/summoningex area define (x1), (y1), (z1), (x2), (y2), (x2) as #(name) [colored (colorop) (colorval) [in (dim)]]/[in (dim)]</code></p>
-<h5 id="x1-y1-z1和x2-y2-z2"><em>x1, y1, z1和x2, y2, z2</em></h5>
-<p>定义了召唤区域的位置（以（x1, y1, z1）与（x2, y2, z2）两个方块坐标（BlockPos）为顶点）<br>
-注意x1, y1, z1, x2, y2, z2为<strong>整数</strong>且x1, x2之间，y1, y2之间与z1, z2之间没有严格的大小限制（也就是说x1既可以大于x2，又可以等于或小于x2）<br>
-x1与x2，y1与y2，z1与z2都相同时表示了一个但方块的召唤区域</p>
-<h5 id="name"><em>name</em></h5>
-<p>定义了召唤区域的名称（指令中的&quot;#&quot;号<strong>不可省略</strong>且<strong>不能为中文</strong>）</p>
-<h5 id="colorop（可以传入custom或preset）及colorval"><em>colorop（可以传入custom或preset）及colorval</em></h5>
-<p>当color传入custom时，colorval应传入一个[0, 16777215]间的十进制整数，表示了召唤区域的RGB颜色值<br>
-当color传入preset时，colorval应传入原版的一种染料颜色（DyeColor），该颜色表示了召唤区域的颜色（但这个颜色的饱和度最大值被限制在了88%）<br>
-若不指定颜色则会随机为召唤区域分配一个颜色</p>
-<p>相关代码<br>
-染料颜色的获取（getDyeColor(CommandContext<CommandSourceStack>, String)静态方法返回输入的染料颜色）：</CommandSourceStack></p>
+<h2 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h2><p>指令名：<code>/summoningex (op)</code>（其中op的类型为<code>area</code>或<code>summon</code>）</p>
+<h3 id="area"><a href="#area" class="headerlink" title="area"></a><strong>area</strong></h3><p>提供了对召唤区域（Summoning Area）的操作<br>格式：<code>/summoningex area (op)</code><br>（其中op的类型为<code>define</code>，<code>list</code>，<code>query</code>，<code>remove</code>，<code>show</code>或<code>hide</code>）</p>
+<h4 id="define"><a href="#define" class="headerlink" title="define"></a>define</h4><p>用于定义和命名召唤区域<br>格式：<code>/summoningex area define (x1), (y1), (z1), (x2), (y2), (x2) as #(name) [colored (colorop) (colorval) [in (dim)]]/[in (dim)]</code></p>
+<h5 id="x1-y1-z1和x2-y2-z2"><a href="#x1-y1-z1和x2-y2-z2" class="headerlink" title="x1, y1, z1和x2, y2, z2"></a><em>x1, y1, z1和x2, y2, z2</em></h5><p>定义了召唤区域的位置（以（x1, y1, z1）与（x2, y2, z2）两个方块坐标（BlockPos）为顶点）<br>注意x1, y1, z1, x2, y2, z2为<strong>整数</strong>且x1, x2之间，y1, y2之间与z1, z2之间没有严格的大小限制（也就是说x1既可以大于x2，又可以等于或小于x2）<br>x1与x2，y1与y2，z1与z2都相同时表示了一个但方块的召唤区域</p>
+<h5 id="name"><a href="#name" class="headerlink" title="name"></a><em>name</em></h5><p>定义了召唤区域的名称（指令中的”#”号<strong>不可省略</strong>且<strong>不能为中文</strong>）</p>
+<h5 id="colorop（可以传入custom或preset）及colorval"><a href="#colorop（可以传入custom或preset）及colorval" class="headerlink" title="colorop（可以传入custom或preset）及colorval"></a><em>colorop（可以传入custom或preset）及colorval</em></h5><p>当color传入custom时，colorval应传入一个[0, 16777215]间的十进制整数，表示了召唤区域的RGB颜色值<br>当color传入preset时，colorval应传入原版的一种染料颜色（DyeColor），该颜色表示了召唤区域的颜色（但这个颜色的饱和度最大值被限制在了88%）<br>若不指定颜色则会随机为召唤区域分配一个颜色</p>
+<p>相关代码<br>染料颜色的获取（getDyeColor(CommandContext<CommandSourceStack>, String)静态方法返回输入的染料颜色）：</CommandSourceStack></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getIntDyeColor</span><span class="params">(CommandContext&lt;CommandSourceStack&gt; context, String name)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">textColor</span> <span class="operator">=</span> getDyeColor(context, name).getTextColor();</span><br><span class="line">    <span class="type">float</span>[] hsbvals = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>];</span><br><span class="line">    Color.RGBtoHSB(textColor &gt;&gt; <span class="number">16</span> &amp; <span class="number">0xFF</span>, textColor &gt;&gt; <span class="number">8</span> &amp; <span class="number">0xFF</span>, textColor &amp; <span class="number">0xFF</span>, hsbvals);</span><br><span class="line"><span class="comment">//  Restricts the saturation</span></span><br><span class="line">    hsbvals[<span class="number">1</span>] = Math.min(<span class="number">0.88f</span>, hsbvals[<span class="number">1</span>]);</span><br><span class="line">    <span class="type">int</span> <span class="variable">color</span> <span class="operator">=</span> Color.HSBtoRGB(hsbvals[<span class="number">0</span>], hsbvals[<span class="number">1</span>], hsbvals[<span class="number">2</span>]);</span><br><span class="line"><span class="comment">//  Make sure the color value is positive</span></span><br><span class="line">    color &amp;= <span class="number">0xffffff</span>;</span><br><span class="line">    <span class="keyword">return</span> color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>颜色的随机分配</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">randomColor</span><span class="params">(RandomSource random)</span> &#123;</span><br><span class="line"><span class="comment">//  Randomly selects hue from 0 to 0.95 (step=0.05)</span></span><br><span class="line">    <span class="type">float</span> <span class="variable">hue</span> <span class="operator">=</span> <span class="number">0.05f</span> * random.nextInt(<span class="number">20</span>);</span><br><span class="line"><span class="comment">//  Two types of saturation - low(0.5) and high(0.8)</span></span><br><span class="line">    <span class="type">float</span> <span class="variable">saturation</span> <span class="operator">=</span> random.nextBoolean() ? <span class="number">0.5f</span> : <span class="number">0.8f</span>;</span><br><span class="line"><span class="comment">//  Randomly selects hue from 0.5 to 1 (step=0.125)</span></span><br><span class="line">    <span class="type">float</span> <span class="variable">brightness</span> <span class="operator">=</span> <span class="number">0.5f</span> + <span class="number">0.125f</span> * random.nextInt(<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">return</span> Color.HSBtoRGB(hue, saturation, brightness);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="dim"><em>dim</em></h5>
-<p>定义了召唤区域所在的维度<br>
-若不指定维度则会使用当前所在维度</p>
-<h5 id="举例"><em>举例</em></h5>
-<p><code>/summoningex area define 0 100 0 10 110 10 as #Example colored custom 16777215 in minecraft:overworld</code><br>
-在主世界定义了一个名为Example，两个顶点分别为（0，100，0），（10，110，10）两个方块坐标，颜色为白色的召唤区域<br>
-<code>/summoningex area define 20 100 20 25 90 25 as #Example2</code><br>
-在指令使用者所在维度定义了一个名为Example2，两个顶点分别为（20，100，20），（25，90，25），颜色随机的召唤区域</p>
-<h4 id="list">list</h4>
-<p>用于列出指定维度内所有的召唤区域<br>
-格式：<code>/summoningex area list [in (dim)]</code></p>
-<h5 id="dim-2"><em>dim</em></h5>
-<p>定义了被用来列出召唤区域的维度<br>
-若不指定维度则会使用当前所在维度</p>
-<h5 id="举例-2"><em>举例</em></h5>
-<p><code>/summoningex area list in minecraft:the_nether</code><br>
-列出了下界所有的召唤区域</p>
-<h4 id="query">query</h4>
-<p>用于在指定维度内查询指定名称的召唤区域<br>
-格式：<code>/summoningex area query local/global (op)</code><br>
-（op将在下文中说明）</p>
-<h5 id="local与global"><em>local与global</em></h5>
-<p>当使用local时，op为召唤区域名，用于在指令使用者所在维度内查询指定名称的的召唤区域<br>
-当使用global时，op为维度+召唤区域名，用于在输入的维度内查询指定名称的的召唤区域<br>
-注意使用global时不会在输入召唤区域名时提供建议（Suggestion）</p>
-<h5 id="举例-3"><em>举例</em></h5>
-<p><code>/summoningex area query local #Example</code><br>
-在指令使用者所在维度查询了名为Example的召唤区域<br>
-<code>/summoningex area query global minecraft:overworld #Example2</code><br>
-在主世界查询了名为Example2的召唤区域</p>
-<h4 id="remove">remove</h4>
-<p>用于在指定维度内移除指定名称的召唤区域<br>
-格式：<code>/summoningex area remove all/global/local (op)</code><br>
-（op将在下文中说明）</p>
-<h5 id="all"><em>all</em></h5>
-<p>此时op为<code>completely</code>或<code>in (dim)</code>，也可以省略op<br>
-当op为<code>completely</code>时，将会移除<strong>所有维度内</strong>所有的召唤区域<br>
-当op为<code>in (dim)</code>时（dim为维度），将会移除指定维度内所有的召唤区域<br>
-当op省略时，将会移除<strong>指令使用者所在维度内</strong>所有的召唤区域</p>
-<h5 id="local与global-2"><em>local与global</em></h5>
-<p>local与global的含义与query中大致相同，此处不再阐述</p>
-<h5 id="举例-4"><em>举例</em></h5>
-<p><code>/summoningex area remove local #Example</code><br>
-在指令使用者所在维度移除了名为Example的召唤区域<br>
-<code>/summoningex area remove all in minecraft:the_end</code><br>
-移除了末地所有的召唤区域</p>
-<h4 id="show">show</h4>
-<p>以长方体边框显示所有的召唤区域（召唤区域默认隐藏）<br>
-当在使用指令<code>/summoningex area show</code>后，如果添加了新的维度，则可能需要重新使用指令</p>
-<h4 id="hide">hide</h4>
-<p>隐藏所有的召唤区域</p>
-<h3 id="summon"><strong>summon</strong></h3>
-<p>提供了在召唤区域（长方体）的底面召唤指定数量实体的操作（召唤的实体将在召唤区域的底面随机分布）<br>
-格式：<code>/summoningex summon (entity) inside #(name) [count (cnt) [nbt (nbt)]]</code></p>
-<h4 id="entity"><em>entity</em></h4>
-<p>指定了所召唤实体的类型（同原版<code>/summon</code>指令的第一个参数）</p>
-<h4 id="name-2"><em>name</em></h4>
-<p>召唤区域的名称（这里只能使用<strong>指令使用者所在维度的</strong>召唤区域）</p>
-<h4 id="cnt"><em>cnt</em></h4>
-<p>指定了召唤实体的数量（最大为2000）<br>
-若不指定则默认召唤一个实体</p>
-<h4 id="nbt"><em>nbt</em></h4>
-<p>指定了召唤的实体的NBT（对每个召唤的实体使用该NBT的副本）<br>
-与原版<code>/summon</code>指令相同，当传入NBT时，Mob类型实体的finalizeSpawn方法将不会被调用</p>
-<h4 id="举例-5"><em>举例</em></h4>
-<p><code>/summoningex summon minecraft:pig inside #Example count 10</code><br>
-在指令使用者所在维度中名为Example的召唤区域内召唤了10只猪<br>
-<code>/summoningex summon minecraft:iron_golem inside #Example2 count 5 nbt &#123;Health:1&#125;</code><br>
-在指令使用者所在维度中名为Example2的召唤区域内召唤了5个生命值为1的铁傀儡</p>
-<h2 id="新的实体选择器">新的实体选择器</h2>
-<p>本Mod提供了一个新的实体选择器（IEntitySelectorType）（默认为@b，可在配置文件内修改）<br>
-该实体选择器可以选中所有（或满足一定条件的）与指定召唤区域相交（指碰撞箱相交）的实体</p>
-<h3 id="格式">格式</h3>
-<p><code>/@b(#(name))[op]</code></p>
-<h4 id="name-3"><em>name</em></h4>
-<p>召唤区域的名称（这里只能使用<strong>指令使用者所在维度的</strong>召唤区域）</p>
-<h4 id="op"><em>[op]</em></h4>
-<p>与原版实体选择器<code>@e</code>相同</p>
-<h4 id="举例-6"><em>举例</em></h4>
-<p><code>/kill @b(#Example)</code><br>
-杀死指令使用者所在维度中名为Example的召唤区域（下文简记为召唤区域Example）内的所有实体<br>
-<code>/effect give @b(#Example)[type=!minecraft:player] minecraft:wither 45</code><br>
-将45秒的凋零效果应用于召唤区域Example内所有不为玩家的实体</p>
-<h2 id="注意事项">注意事项</h2>
-<ul>
+
+<h5 id="dim"><a href="#dim" class="headerlink" title="dim"></a><em>dim</em></h5><p>定义了召唤区域所在的维度<br>若不指定维度则会使用当前所在维度</p>
+<h5 id="举例"><a href="#举例" class="headerlink" title="举例"></a><em>举例</em></h5><p><code>/summoningex area define 0 100 0 10 110 10 as #Example colored custom 16777215 in minecraft:overworld</code><br>在主世界定义了一个名为Example，两个顶点分别为（0，100，0），（10，110，10）两个方块坐标，颜色为白色的召唤区域<br><code>/summoningex area define 20 100 20 25 90 25 as #Example2</code><br>在指令使用者所在维度定义了一个名为Example2，两个顶点分别为（20，100，20），（25，90，25），颜色随机的召唤区域</p>
+<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><p>用于列出指定维度内所有的召唤区域<br>格式：<code>/summoningex area list [in (dim)]</code></p>
+<h5 id="dim-1"><a href="#dim-1" class="headerlink" title="dim"></a><em>dim</em></h5><p>定义了被用来列出召唤区域的维度<br>若不指定维度则会使用当前所在维度</p>
+<h5 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a><em>举例</em></h5><p><code>/summoningex area list in minecraft:the_nether</code><br>列出了下界所有的召唤区域</p>
+<h4 id="query"><a href="#query" class="headerlink" title="query"></a>query</h4><p>用于在指定维度内查询指定名称的召唤区域<br>格式：<code>/summoningex area query local/global (op)</code><br>（op将在下文中说明）</p>
+<h5 id="local与global"><a href="#local与global" class="headerlink" title="local与global"></a><em>local与global</em></h5><p>当使用local时，op为召唤区域名，用于在指令使用者所在维度内查询指定名称的的召唤区域<br>当使用global时，op为维度+召唤区域名，用于在输入的维度内查询指定名称的的召唤区域<br>注意使用global时不会在输入召唤区域名时提供建议（Suggestion）</p>
+<h5 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a><em>举例</em></h5><p><code>/summoningex area query local #Example</code><br>在指令使用者所在维度查询了名为Example的召唤区域<br><code>/summoningex area query global minecraft:overworld #Example2</code><br>在主世界查询了名为Example2的召唤区域</p>
+<h4 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h4><p>用于在指定维度内移除指定名称的召唤区域<br>格式：<code>/summoningex area remove all/global/local (op)</code><br>（op将在下文中说明）</p>
+<h5 id="all"><a href="#all" class="headerlink" title="all"></a><em>all</em></h5><p>此时op为<code>completely</code>或<code>in (dim)</code>，也可以省略op<br>当op为<code>completely</code>时，将会移除<strong>所有维度内</strong>所有的召唤区域<br>当op为<code>in (dim)</code>时（dim为维度），将会移除指定维度内所有的召唤区域<br>当op省略时，将会移除<strong>指令使用者所在维度内</strong>所有的召唤区域</p>
+<h5 id="local与global-1"><a href="#local与global-1" class="headerlink" title="local与global"></a><em>local与global</em></h5><p>local与global的含义与query中大致相同，此处不再阐述</p>
+<h5 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a><em>举例</em></h5><p><code>/summoningex area remove local #Example</code><br>在指令使用者所在维度移除了名为Example的召唤区域<br><code>/summoningex area remove all in minecraft:the_end</code><br>移除了末地所有的召唤区域</p>
+<h4 id="show"><a href="#show" class="headerlink" title="show"></a>show</h4><p>以长方体边框显示所有的召唤区域（召唤区域默认隐藏）<br>当在使用指令<code>/summoningex area show</code>后，如果添加了新的维度，则可能需要重新使用指令</p>
+<h4 id="hide"><a href="#hide" class="headerlink" title="hide"></a>hide</h4><p>隐藏所有的召唤区域</p>
+<h3 id="summon"><a href="#summon" class="headerlink" title="summon"></a><strong>summon</strong></h3><p>提供了在召唤区域（长方体）的底面召唤指定数量实体的操作（召唤的实体将在召唤区域的底面随机分布）<br>格式：<code>/summoningex summon (entity) inside #(name) [count (cnt) [nbt (nbt)]]</code></p>
+<h4 id="entity"><a href="#entity" class="headerlink" title="entity"></a><em>entity</em></h4><p>指定了所召唤实体的类型（同原版<code>/summon</code>指令的第一个参数）</p>
+<h4 id="name-1"><a href="#name-1" class="headerlink" title="name"></a><em>name</em></h4><p>召唤区域的名称（这里只能使用<strong>指令使用者所在维度的</strong>召唤区域）</p>
+<h4 id="cnt"><a href="#cnt" class="headerlink" title="cnt"></a><em>cnt</em></h4><p>指定了召唤实体的数量（最大为2000）<br>若不指定则默认召唤一个实体</p>
+<h4 id="nbt"><a href="#nbt" class="headerlink" title="nbt"></a><em>nbt</em></h4><p>指定了召唤的实体的NBT（对每个召唤的实体使用该NBT的副本）<br>与原版<code>/summon</code>指令相同，当传入NBT时，Mob类型实体的finalizeSpawn方法将不会被调用</p>
+<h4 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a><em>举例</em></h4><p><code>/summoningex summon minecraft:pig inside #Example count 10</code><br>在指令使用者所在维度中名为Example的召唤区域内召唤了10只猪<br><code>/summoningex summon minecraft:iron_golem inside #Example2 count 5 nbt &#123;Health:1&#125;</code><br>在指令使用者所在维度中名为Example2的召唤区域内召唤了5个生命值为1的铁傀儡</p>
+<h2 id="新的实体选择器"><a href="#新的实体选择器" class="headerlink" title="新的实体选择器"></a>新的实体选择器</h2><p>本Mod提供了一个新的实体选择器（IEntitySelectorType）（默认为@b，可在配置文件内修改）<br>该实体选择器可以选中所有（或满足一定条件的）与指定召唤区域相交（指碰撞箱相交）的实体</p>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p><code>/@b(#(name))[op]</code></p>
+<h4 id="name-2"><a href="#name-2" class="headerlink" title="name"></a><em>name</em></h4><p>召唤区域的名称（这里只能使用<strong>指令使用者所在维度的</strong>召唤区域）</p>
+<h4 id="op"><a href="#op" class="headerlink" title="[op]"></a><em>[op]</em></h4><p>与原版实体选择器<code>@e</code>相同</p>
+<h4 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a><em>举例</em></h4><p><code>/kill @b(#Example)</code><br>杀死指令使用者所在维度中名为Example的召唤区域（下文简记为召唤区域Example）内的所有实体<br><code>/effect give @b(#Example)[type=!minecraft:player] minecraft:wither 45</code><br>将45秒的凋零效果应用于召唤区域Example内所有不为玩家的实体</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
 <li>与原版<code>/summon</code>指令相同，Mod的所有指令的执行权限为2</li>
 </ul>
-<h2 id="后记">后记</h2>
-<p>高中学习压力较大（高一的暑假就只放30多天，这个Mod是暑假抽时间做的），并且两周回家一次，因此开学后可能不会频繁地维护Mod，但我会尽量不停更，也许也会为Mod增加一些内容233</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>高中学习压力较大（高一的暑假就只放30多天，这个Mod是暑假抽时间做的），并且两周回家一次，因此开学后可能不会频繁地维护Mod，但我会尽量不停更，也许也会为Mod增加一些内容233</p>
 
     </div>
 
@@ -424,7 +350,10 @@ x1与x2，y1与y2，z1与z2都相同时表示了一个但方块的召唤区域</
     <a href="/2023/04/29/float-double/" rel="prev" title="（MC1.16.5）float的精度引起的一个渲染问题">
       <i class="fa fa-chevron-left"></i> （MC1.16.5）float的精度引起的一个渲染问题
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/23/unavailable/" rel="next" title="公告">
+      公告 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -484,7 +413,7 @@ x1与x2，y1与y2，z1与z2都相同时表示了一个但方块的召唤区域</
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">文章说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#area"><span class="nav-number">2.1.</span> <span class="nav-text">area</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#define"><span class="nav-number">2.1.1.</span> <span class="nav-text">define</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#x1-y1-z1%E5%92%8Cx2-y2-z2"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">x1, y1, z1和x2, y2, z2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#name"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#colorop%EF%BC%88%E5%8F%AF%E4%BB%A5%E4%BC%A0%E5%85%A5custom%E6%88%96preset%EF%BC%89%E5%8F%8Acolorval"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">colorop（可以传入custom或preset）及colorval</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#dim"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">dim</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list"><span class="nav-number">2.1.2.</span> <span class="nav-text">list</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#dim-2"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">dim</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-2"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#query"><span class="nav-number">2.1.3.</span> <span class="nav-text">query</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#local%E4%B8%8Eglobal"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">local与global</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-3"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove"><span class="nav-number">2.1.4.</span> <span class="nav-text">remove</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#all"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">all</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#local%E4%B8%8Eglobal-2"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">local与global</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-4"><span class="nav-number">2.1.4.3.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#show"><span class="nav-number">2.1.5.</span> <span class="nav-text">show</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hide"><span class="nav-number">2.1.6.</span> <span class="nav-text">hide</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summon"><span class="nav-number">2.2.</span> <span class="nav-text">summon</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#entity"><span class="nav-number">2.2.1.</span> <span class="nav-text">entity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#name-2"><span class="nav-number">2.2.2.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnt"><span class="nav-number">2.2.3.</span> <span class="nav-text">cnt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nbt"><span class="nav-number">2.2.4.</span> <span class="nav-text">nbt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-5"><span class="nav-number">2.2.5.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E7%9A%84%E5%AE%9E%E4%BD%93%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">新的实体选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#name-3"><span class="nav-number">3.1.1.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#op"><span class="nav-number">3.1.2.</span> <span class="nav-text">[op]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-6"><span class="nav-number">3.1.3.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">文章说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#area"><span class="nav-number">2.1.</span> <span class="nav-text">area</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#define"><span class="nav-number">2.1.1.</span> <span class="nav-text">define</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#x1-y1-z1%E5%92%8Cx2-y2-z2"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">x1, y1, z1和x2, y2, z2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#name"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#colorop%EF%BC%88%E5%8F%AF%E4%BB%A5%E4%BC%A0%E5%85%A5custom%E6%88%96preset%EF%BC%89%E5%8F%8Acolorval"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">colorop（可以传入custom或preset）及colorval</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#dim"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">dim</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list"><span class="nav-number">2.1.2.</span> <span class="nav-text">list</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#dim-1"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">dim</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-1"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#query"><span class="nav-number">2.1.3.</span> <span class="nav-text">query</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#local%E4%B8%8Eglobal"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">local与global</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-2"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove"><span class="nav-number">2.1.4.</span> <span class="nav-text">remove</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#all"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">all</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#local%E4%B8%8Eglobal-1"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">local与global</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-3"><span class="nav-number">2.1.4.3.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#show"><span class="nav-number">2.1.5.</span> <span class="nav-text">show</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hide"><span class="nav-number">2.1.6.</span> <span class="nav-text">hide</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summon"><span class="nav-number">2.2.</span> <span class="nav-text">summon</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#entity"><span class="nav-number">2.2.1.</span> <span class="nav-text">entity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#name-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnt"><span class="nav-number">2.2.3.</span> <span class="nav-text">cnt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nbt"><span class="nav-number">2.2.4.</span> <span class="nav-text">nbt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-4"><span class="nav-number">2.2.5.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E7%9A%84%E5%AE%9E%E4%BD%93%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">新的实体选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#name-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#op"><span class="nav-number">3.1.2.</span> <span class="nav-text">[op]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B-5"><span class="nav-number">3.1.3.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -500,7 +429,7 @@ x1与x2，y1与y2，z1与z2都相同时表示了一个但方块的召唤区域</
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
